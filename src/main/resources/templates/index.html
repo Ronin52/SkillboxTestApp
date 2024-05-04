@@ -6,8 +6,8 @@
 <body>
 <img src="logo.png" alt="Logo">
 <form action="/content/save" th:object="${content}" method="post">
-<!--Прошу обратить внимание на валидацию на фронте, чтобы не было лишних запросов на бэкенд-->
-    <input type="text" th:field="*{content}" required minlength="3" maxlength="10"/>
+    <!--Прошу обратить внимание на валидацию на фронте, чтобы не было лишних запросов на бэкенд-->
+    <input type="text" th:field="*{content}" required th:minlength="${min_length}" th:maxlength="${max_length}"/>
     <button type="submit">Save</button>
 </form>
 <span th:if="${#fields.errors('content')}" th:errors="*{content}"></span>
